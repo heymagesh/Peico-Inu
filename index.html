@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peico Inu | The Next Solana Wave</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #008f4c; /* Darker green for white background visibility */
+            --bg: #ffffff;
+            --card-bg: #f4f9f6;
+            --text-main: #1a1a1a;
+            --text-dim: #444444;
+            --accent-glow: rgba(0, 143, 76, 0.1);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text-main);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: rgba(255, 255, 255, 0.95);
+            position: fixed;
+            top: 0;
+            width: 90%;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 143, 76, 0.1);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 24px;
+            color: var(--primary);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-links a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: var(--text-dim);
+            font-weight: 600;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .cta-nav {
+            background: var(--primary);
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-weight: 700;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding-top: 120px;
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #f0fff7 0%, #ffffff 100%);
+        }
+
+        .pengu-img {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            border: 4px solid var(--primary);
+            box-shadow: 0 10px 30px var(--accent-glow);
+            animation: float 5s ease-in-out infinite;
+            object-fit: cover;
+            margin-bottom: 30px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        .hero h1 {
+            font-size: clamp(35px, 8vw, 70px);
+            font-weight: 800;
+            max-width: 900px;
+            line-height: 1.1;
+            margin: 0 20px;
+            color: #111;
+        }
+
+        .hero span { color: var(--primary); }
+
+        .hero p {
+            color: var(--text-dim);
+            font-size: 20px;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        .btn-main {
+            background: var(--primary);
+            color: #fff;
+            padding: 20px 45px;
+            border: none;
+            border-radius: 50px;
+            font-size: 22px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.4s;
+            box-shadow: 0 10px 20px var(--accent-glow);
+        }
+
+        .btn-main:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 143, 76, 0.3);
+        }
+
+        /* SECTION STYLING */
+        section { padding: 80px 10%; text-align: center; }
+        
+        h2 {
+            font-size: clamp(30px, 5vw, 50px);
+            color: var(--primary);
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        .content-text {
+            max-width: 850px;
+            margin: 0 auto;
+            font-size: 19px;
+            line-height: 1.8;
+            color: var(--text-dim);
+            white-space: pre-line;
+        }
+
+        /* GRID / CARDS */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .box {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 143, 76, 0.1);
+            transition: 0.3s;
+            color: var(--text-main);
+        }
+
+        .box:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .box b { color: var(--primary); display: block; margin-top: 10px; font-size: 1.2rem; }
+
+        /* ROADMAP */
+        .roadmap-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .phase {
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: left;
+            border: 1px solid #eee;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        /* CONTRACT BOX */
+        .ca-container {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            display: inline-block;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .ca-input-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        input {
+            background: #fff;
+            border: 1px solid var(--primary);
+            color: #111;
+            padding: 15px;
+            border-radius: 10px;
+            width: 300px;
+            font-family: monospace;
+        }
+
+        .copy-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        footer {
+            padding: 50px;
+            background: #f9f9f9;
+            border-top: 1px solid #eee;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 38px; }
+            input { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">ＰＥＩＣＯ ＩＮＵ</div>
+    <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#tokenomics">Tokenomics</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#" class="cta-nav">View Chart</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <img src="peico1.jpg" alt="Peico Inu" class="pengu-img">
+    <h1>The <span>Peico Inu</span> powering the next meme wave on Solana</h1>
+    <p>Community driven meme token inspired by Peico patterns and internet culture.</p>
+    <button class="btn-main" onclick="buy()">BUY $PEICO NOW</button>
+</section>
+
+<section id="about">
+    <h2>About Peico Inu</h2>
+    <div class="content-text">
+        Peico Inu is a community-driven meme cryptocurrency built on the Solana blockchain.
+        Inspired by meme culture, viral energy, and internet creativity, this project represents the power of decentralized communities and bold ideas.
+        
+        The Inu symbolizes loyalty, chaos energy, and unstoppable growth across the Web3 space.
+        Peico Inu is not just a token — it’s a movement born from meme culture and driven by the people.
+        
+        Peico Inu is only getting started. The vision is to grow beyond just a meme and become a strong, recognizable Web3 cultural brand.
+        
+        Peico Inu 🐶💚
+        Still in the very early stage. Smart degens and early believers are quietly accumulating.
+        Early ones understand the vision. The rest will chase later 🚀.
+    </div>
+</section>
+
+<section id="tokenomics" style="background: #f4f9f6;">
+    <h2>Tokenomics</h2>
+    <div class="content-text">
+        Peico Inu Tokenomics 🐶💚
+        Peico Inu has a fixed supply of 1 Billion tokens.
+        The entire 1 Billion supply is in circulation, ensuring full transparency and no hidden unlocks.
+        Only 1.5% of the total supply is allocated to the team, reserved strictly for future development, marketing, and ecosystem growth.
+
+        <strong>Availability 🌐</strong>
+        Peico Inu is live across major Solana decentralized exchanges including Orca, Meteora, Raydium, Pump.fun, and other Solana DEX platforms.
+    </div>
+
+    <div class="grid">
+        <div class="box">Name<br><b>Peico Inu</b></div>
+        <div class="box">Ticker<br><b>PEICO</b></div>
+        <div class="box">Chain<br><b>Solana Chain</b></div>
+        <div class="box">Total Supply<br><b>1 Billion</b></div>
+        <div class="box">Circulating<br><b>1 Billion</b></div>
+        <div class="box">Team Vesting<br><b>1.5% Allocation</b></div>
+        <div class="box">Listing<br><b>DEX & OKX Soon</b></div>
+    </div>
+</section>
+
+<section id="community">
+    <h2>The Movement</h2>
+    <div class="content-text">
+        The Peico Inu community is the driving force behind the entire ecosystem. Through memes, discussions, raids, and pure degen energy, holders push the project across every corner of the internet. 
+        
+        Future expansions include:
+        • NFT collections 🖼️
+        • Interactive community tools ⚙️
+        • Collaborations with digital artists 🎨
+    </div>
+</section>
+
+<section id="roadmap">
+    <h2>Roadmap</h2>
+    <div class="roadmap-container">
+        <div class="phase">
+            <h3>Phase 1</h3>
+            <p>Token launch<br>Website release<br>Community building</p>
+        </div>
+        <div class="phase">
+            <h3>Phase 2</h3>
+            <p>DEX listings<br>Marketing push<br>Community expansion</p>
+        </div>
+        <div class="phase">
+            <h3>Phase 3</h3>
+            <p>Partnerships<br>Major marketing campaigns<br>Global community growth</p>
+        </div>
+        <div class="phase">
+            <h3>Phase 4</h3>
+            <p>Peico Inu ecosystem<br>New utilities<br>Long term development</p>
+        </div>
+    </div>
+</section>
+
+<section id="trust">
+    <h2>Why Trust Us?</h2>
+    <div class="grid">
+        <div class="box"><h3>🔒 Liquidity Locked</h3><p>Prevents rug pulls and protects our community.</p></div>
+        <div class="box"><h3>👥 Community Driven</h3><p>Growth is driven by supporters and believers.</p></div>
+        <div class="box"><h3>🚀 Fair Launch</h3><p>No presale. No private allocations. Fair for all.</p></div>
+    </div>
+</section>
+
+<section>
+    <div class="ca-container">
+        <h2>Contract Address</h2>
+        <p>Verify the Contract on Solscan</p>
+        <div class="ca-input-group">
+            <input id="ca" value="AxsgwykWWw4Adgye35vwjPxxWRGA5hNdRC2kvm3epump" readonly>
+            <button class="copy-btn" onclick="copy()">COPY CA</button>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Peico Inu — Powered by the pack 🐶💚</p>
+</footer>
+
+<script>
+function copy(){
+    var copyText = document.getElementById("ca");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(copyText.value);
+    alert("CA Copied: " + copyText.value);
+}
+
+function buy(){
+    window.open("https://pump.fun/coin/AxsgwykWWw4Adgye35vwjPxxWRGA5hNdRC2kvm3epump");
+}
+</script>
+
+</body>
+</html>
