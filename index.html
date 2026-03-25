@@ -764,12 +764,34 @@
             }
         });
 
-        // 3. STATS SIMULATOR
-        let baseMcap = 1420000;
-        setInterval(() => {
-            baseMcap += (Math.random() * 1000) - 400;
-            document.getElementById('mcapSim').innerText = '$' + baseMcap.toLocaleString();
-        }, 2000);
+        // 3. LIVE PRICE (DEXSCREENER)
+const CA = "B9viSKqxavs7d1tyFiteX8wLkaMzuYhah5gzFMh3pump";
+
+async function updatePrice() {
+    try {
+        const res = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${CA}`);
+        const data = await res.json();
+
+        if (!data.pairs || data.pairs.length === 0) return;
+
+        const pair = data.pairs[0];
+
+        // PRICE
+        document.getElementById("priceSim").innerText =
+            "$" + Number(pair.priceUsd).toFixed(8);
+
+        // MCAP
+        document.getElementById("mcapSim").innerText =
+            "$" + Number(pair.fdv).toLocaleString();
+
+    } catch (e) {
+        console.log("DEX ERROR:", e);
+    }
+}
+
+// run
+updatePrice();
+setInterval(updatePrice, 5000);
 
         // 4. COPY CONTRACT ADDRESS
         function copyCA() {
