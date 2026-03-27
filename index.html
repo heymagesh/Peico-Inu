@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Peico Rage | The Unstoppable Force of Solana 🐶🔥</title>
+    
+    <meta name="description" content="Peico Rage is the final evolution of Solana meme culture. Unmatched speed, absolute loyalty. 100% Burned, 0% Tax.">
+    <meta name="keywords" content="Peico Rage, Solana Meme, Crypto Rage, PEICO, Solana Moon, Pump.fun">
+    <meta property="og:title" content="Peico Rage - The King of Chaos">
+    <meta property="og:image" content="peico1.jpg">
+    <meta property="og:type" content="website">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        /* ============================================================
+           1. CORE DESIGN TOKENS (RAGE RED THEME)
+           ============================================================ */
+        :root {
+            --primary: #FF5C4D; /* Pure Cat Red */
+            --primary-rgb: 255, 92, 77;
+            --primary-dark: #CC4A3E;
+            --primary-glow: rgba(255, 92, 77, 0.4);
+            --secondary: #FF2E17;
+            --accent: #FFD700;
+            --dark: #0A0404;
+            --dark-surface: #140808;
+            --dark-card: #1D0C0B;
+            --dark-border: #2D1412;
+            --light-text: #F8FAFC;
+            --muted-text: #94A3B8;
+            --glass-bg: rgba(13, 5, 5, 0.85);
+            --glass-border: rgba(255, 92, 77, 0.2);
+            --gradient-rage: linear-gradient(135deg, #FF5C4D 0%, #FF2E17 100%);
+            --shadow-rage: 0 20px 40px -10px rgba(255, 92, 77, 0.3);
+            --font-main: 'Space Grotesk', sans-serif;
+            --font-head: 'Unbounded', sans-serif;
+            --font-alt: 'Outfit', sans-serif;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+            --t-fast: 0.3s;
+            --t-med: 0.6s;
+            --t-slow: 1s;
+        }
+
+        /* ============================================================
+           2. GLOBAL RESET & BASE STYLES
+           ============================================================ */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--dark); }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 5px; border: 3px solid var(--dark); }
+        ::-webkit-scrollbar-thumb:hover { background: var(--secondary); }
+
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+        body { 
+            background: var(--dark); 
+            color: var(--light-text); 
+            font-family: var(--font-main); 
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            cursor: none;
+        }
+
+        section { padding: 150px 8%; position: relative; z-index: 10; }
+        a { text-decoration: none; color: inherit; transition: var(--t-fast); }
+        ul { list-style: none; }
+        button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+        /* ============================================================
+           3. EXTENDED ANIMATION LIBRARY
+           ============================================================ */
+        @keyframes rage-pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 92, 77, 0.7); } 70% { box-shadow: 0 0 0 25px rgba(255, 92, 77, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 92, 77, 0); } }
+        @keyframes float-rage { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-30px) rotate(3deg); } }
+        @keyframes marquee-rage { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @keyframes scan-line { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
+        @keyframes text-shine { 0% { background-position: -200%; } 100% { background-position: 200%; } }
+        @keyframes rotate-infinite { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+        @keyframes blob-movement { 0% { transform: translate(0, 0) scale(1); } 50% { transform: translate(50px, -50px) scale(1.1); } 100% { transform: translate(0, 0) scale(1); } }
+        @keyframes card-tilt { 0% { transform: rotateX(0) rotateY(0); } 100% { transform: rotateX(10deg) rotateY(10deg); } }
+
+        /* ============================================================
+           4. CUSTOM CURSOR & ELEMENTS
+           ============================================================ */
+        .rage-cursor { position: fixed; width: 12px; height: 12px; background: var(--primary); border-radius: 50%; pointer-events: none; z-index: 99999; mix-blend-mode: difference; transition: transform 0.1s ease; }
+        .rage-cursor-ring { position: fixed; width: 40px; height: 40px; border: 2px solid var(--primary); border-radius: 50%; pointer-events: none; z-index: 99998; transition: all 0.2s var(--ease); }
+
+        .rage-bg-nebula { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+        .nebula-blob { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.15; animation: blob-movement 15s infinite alternate ease-in-out; }
+        .blob-red { width: 700px; height: 700px; background: var(--primary); top: -10%; left: -10%; }
+        .blob-dark { width: 500px; height: 500px; background: var(--primary-dark); bottom: -10%; right: -5%; animation-delay: -5s; }
+
+        /* ============================================================
+           5. PRELOADER (DETAILED)
+           ============================================================ */
+        #preloader { position: fixed; inset: 0; background: var(--dark); z-index: 10000; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.8s var(--ease); }
+        .preloader-box { text-align: center; }
+        .rage-loader-circle { width: 150px; height: 150px; border: 2px solid rgba(255, 92, 77, 0.1); border-top: 2px solid var(--primary); border-radius: 50%; animation: rotate-infinite 1s linear infinite; margin: 0 auto 30px; position: relative; }
+        .rage-loader-circle::after { content: ''; position: absolute; inset: 10px; border: 2px solid rgba(255, 92, 77, 0.05); border-bottom: 2px solid var(--secondary); border-radius: 50%; animation: rotate-infinite 2s linear reverse infinite; }
+        .loader-text { font-family: var(--font-head); font-weight: 900; font-size: 0.8rem; color: var(--primary); letter-spacing: 5px; text-transform: uppercase; }
+
+        /* ============================================================
+           6. TICKER & TOP NAV
+           ============================================================ */
+        .rage-ticker { background: var(--primary); height: 45px; position: fixed; top: 0; width: 100%; z-index: 1001; display: flex; align-items: center; overflow: hidden; border-bottom: 2px solid rgba(0,0,0,0.2); }
+        .ticker-inner { display: flex; white-space: nowrap; animation: marquee-rage 20s linear infinite; }
+        .ticker-inner span { padding: 0 50px; color: var(--white); font-weight: 900; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; }
+
+        header {
+            position: fixed;
+            top: 65px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 92%;
+            max-width: 1400px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            padding: 18px 45px;
+            border-radius: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 999;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-rage);
+            transition: all 0.5s var(--ease);
+        }
+        header.scrolled { top: 20px; width: 96%; padding: 14px 35px; border-color: var(--primary); }
+
+        .logo-box { display: flex; align-items: center; gap: 18px; text-decoration: none; }
+        .logo-img { width: 50px; height: 50px; border-radius: 50%; border: 3px solid var(--primary); transition: transform 0.6s var(--ease); object-fit: cover; }
+        .logo-box:hover .logo-img { transform: rotate(360deg) scale(1.1); }
+        .logo-box span { font-family: var(--font-head); font-weight: 900; color: var(--light-text); font-size: 1.5rem; letter-spacing: -1.5px; }
+
+        .nav-menu { display: flex; gap: 40px; }
+        .nav-item { position: relative; }
+        .nav-link { font-family: var(--font-main); font-weight: 700; font-size: 0.9rem; color: var(--muted-text); text-transform: uppercase; letter-spacing: 1px; }
+        .nav-link::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 0; height: 2px; background: var(--primary); transition: 0.3s; }
+        .nav-link:hover { color: var(--primary); }
+        .nav-link:hover::after { width: 100%; }
+
+        .nav-btns { display: flex; gap: 15px; }
+        .btn-rage {
+            padding: 14px 30px;
+            border-radius: 100px;
+            font-weight: 900;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.4s var(--ease);
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid transparent;
+        }
+        .btn-outline { border-color: var(--primary); color: var(--light-text); }
+        .btn-solid { background: var(--primary); color: var(--dark); }
+        .btn-rage:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(255, 92, 77, 0.4); }
+
+        /* ============================================================
+           7. HERO SECTION (EXPLOSIVE)
+           ============================================================ */
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding-top: 180px; }
+        .hero-container { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; width: 100%; max-width: 1500px; align-items: center; }
+        
+        .rage-badge { 
+            background: rgba(255, 92, 77, 0.1); 
+            border: 1px solid var(--primary); 
+            padding: 10px 25px; 
+            border-radius: 100px; 
+            color: var(--primary); 
+            font-weight: 900; 
+            font-size: 0.8rem; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            display: inline-block; 
+            margin-bottom: 30px; 
+            animation: rage-pulse 2s infinite;
+        }
+
+        .hero-h1 { font-family: var(--font-head); font-size: 7.5rem; line-height: 0.8; color: var(--light-text); margin-bottom: 35px; letter-spacing: -6px; }
+        .hero-h1 span { color: var(--primary); display: block; filter: drop-shadow(0 0 15px var(--primary-glow)); }
+        
+        .hero-p { font-size: 1.6rem; color: var(--muted-text); margin-bottom: 60px; max-width: 650px; font-weight: 300; line-height: 1.4; }
+
+        .hero-visual { position: relative; perspective: 1000px; }
+        .hero-main-img { 
+            width: 100%; 
+            border-radius: 35% 65% 65% 35% / 30% 30% 70% 70%; 
+            animation: float-rage 6s infinite ease-in-out, morphing 10s infinite alternate; 
+            border: 20px solid rgba(255,255,255,0.03); 
+            box-shadow: 0 50px 100px rgba(0,0,0,0.5); 
+        }
+
+        .stat-bubble {
+            position: absolute;
+            background: var(--dark-glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            padding: 20px 30px;
+            border-radius: 25px;
+            z-index: 5;
+            animation: float-rage 4s infinite ease-in-out;
+        }
+        .bubble-1 { top: 10%; right: -10%; animation-delay: 0s; }
+        .bubble-2 { bottom: 10%; left: -10%; animation-delay: -2s; }
+        .bubble-3 { top: 50%; left: -15%; animation-delay: -3.5s; }
+
+        /* ============================================================
+           8. DASHBOARD / GRID SYSTEM
+           ============================================================ */
+        .dash-row { margin-top: -120px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+        .dash-card {
+            background: var(--dark-card);
+            padding: 50px 35px;
+            border-radius: 40px;
+            border: 1px solid var(--dark-border);
+            text-align: center;
+            transition: all 0.5s var(--ease);
+            position: relative;
+            overflow: hidden;
+        }
+        .dash-card:hover { transform: translateY(-20px) rotateX(10deg); border-color: var(--primary); box-shadow: var(--shadow-rage); }
+        .dash-card::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(255, 92, 77, 0.05), transparent); opacity: 0; transition: 0.5s; }
+        .dash-card:hover::after { opacity: 1; }
+        
+        .dash-label { color: var(--muted-text); font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; display: block; }
+        .dash-val { font-family: var(--font-head); font-size: 2.5rem; color: var(--white); font-weight: 900; }
+
+        /* ============================================================
+           9. PHILOSOPHY / ABOUT
+           ============================================================ */
+        .rage-about { background: linear-gradient(to bottom, transparent, #0f0505); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 120px; align-items: center; }
+        .about-media { position: relative; border-radius: 60px; overflow: hidden; }
+        .about-img { width: 100%; border-radius: 60px; filter: grayscale(0.5); transition: 0.8s; }
+        .about-media:hover .about-img { filter: grayscale(0) scale(1.05); }
+        
+        .about-h2 { font-family: var(--font-head); font-size: 4.5rem; line-height: 0.9; margin-bottom: 35px; }
+        .about-h2 span { color: var(--primary); }
+        .about-p { font-size: 1.25rem; color: var(--muted-text); margin-bottom: 50px; line-height: 1.8; }
+
+        .rage-features { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+        .f-card { background: var(--dark-surface); padding: 35px; border-radius: 30px; border: 1px solid var(--dark-border); transition: 0.4s; }
+        .f-card:hover { border-color: var(--primary); transform: scale(1.05); }
+        .f-card i { font-size: 3rem; color: var(--primary); margin-bottom: 25px; display: block; }
+        .f-card h4 { font-family: var(--font-head); font-size: 1.1rem; margin-bottom: 12px; }
+
+        /* ============================================================
+           10. THE VAULT / GALLERY (ULTRA HD)
+           ============================================================ */
+        .vault-head { text-align: center; margin-bottom: 100px; }
+        .vault-h2 { font-family: var(--font-head); font-size: 5rem; }
+        .vault-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        .vault-item { position: relative; border-radius: 45px; overflow: hidden; aspect-ratio: 1; cursor: pointer; box-shadow: 0 30px 60px rgba(0,0,0,0.4); }
+        .vault-item img { width: 100%; height: 100%; object-fit: cover; transition: 1s var(--ease); }
+        .vault-item:hover img { transform: scale(1.2) rotate(2deg); }
+        .vault-info { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,4,4,0.95), transparent); padding: 50px; display: flex; flex-direction: column; justify-content: flex-end; opacity: 0; transition: 0.5s; }
+        .vault-item:hover .vault-info { opacity: 1; }
+        .vault-info h4 { font-family: var(--font-head); font-size: 1.5rem; color: var(--primary); }
+
+        /* ============================================================
+           11. PEICONOMICS / TOKENOMICS
+           ============================================================ */
+        .rage-tok { background: var(--dark-surface); border-radius: 100px; padding: 120px 8%; border: 1px solid var(--dark-border); position: relative; overflow: hidden; }
+        .tok-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 100px; align-items: center; }
+        
+        .tok-list { display: flex; flex-direction: column; gap: 15px; }
+        .tok-item { display: flex; justify-content: space-between; padding: 30px; background: rgba(255,255,255,0.02); border-radius: 25px; border: 1px solid rgba(255,255,255,0.05); }
+        .tok-k { color: var(--muted-text); font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; }
+        .tok-v { color: var(--primary); font-family: var(--font-head); font-weight: 900; }
+
+        .tok-circle-visual { position: relative; width: 450px; height: 450px; margin: 0 auto; display: flex; align-items: center; justify-content: center; }
+        .circle-svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+        .circle-bg { fill: none; stroke: rgba(255, 92, 77, 0.05); stroke-width: 25; }
+        .circle-fill { fill: none; stroke: var(--primary); stroke-width: 25; stroke-dasharray: 1000; stroke-dashoffset: 250; transition: stroke-dashoffset 2s var(--ease); }
+        .tok-center-text { position: absolute; text-align: center; }
+        .tok-center-text h3 { font-family: var(--font-head); font-size: 4rem; color: var(--white); }
+
+        /* ============================================================
+           12. CONTRACT ADDRESS BOX
+           ============================================================ */
+        .rage-ca-section { text-align: center; }
+        .ca-box { background: linear-gradient(45deg, #1A0808, #2A0E0D); padding: 100px 80px; border-radius: 80px; border: 2px solid var(--primary); position: relative; }
+        .ca-box h2 { font-family: var(--font-head); font-size: 3.5rem; margin-bottom: 30px; }
+        .ca-input { background: rgba(0,0,0,0.4); padding: 25px 45px; border-radius: 30px; display: inline-flex; align-items: center; gap: 25px; border: 2px dashed rgba(255, 92, 77, 0.5); max-width: 100%; margin-top: 30px; }
+        .ca-code { font-family: 'Courier New', Courier, monospace; font-size: 1.5rem; color: var(--primary); font-weight: 900; word-break: break-all; }
+        .copy-btn { background: var(--primary); color: var(--dark); padding: 18px 40px; border-radius: 20px; font-weight: 900; transition: 0.3s; }
+        .copy-btn:hover { background: var(--white); transform: scale(1.1); }
+
+        /* ============================================================
+           13. CONQUEST MAP (ROADMAP)
+           ============================================================ */
+        .roadmap-path { position: relative; max-width: 1200px; margin: 0 auto; }
+        .roadmap-line { position: absolute; left: 50%; top: 0; width: 6px; height: 100%; background: rgba(255, 92, 77, 0.1); transform: translateX(-50%); }
+        .roadmap-progress { position: absolute; left: 50%; top: 0; width: 6px; height: 0%; background: var(--primary); transform: translateX(-50%); transition: 1s linear; box-shadow: 0 0 20px var(--primary); }
+
+        .road-step { width: 50%; padding: 60px; position: relative; opacity: 0; transform: translateY(50px); transition: 1s; }
+        .step-show { opacity: 1; transform: translateY(0); }
+        .step-L { text-align: right; left: 0; }
+        .step-R { text-align: left; left: 50%; }
+        
+        .step-pointer { position: absolute; top: 80px; width: 40px; height: 40px; background: var(--dark); border: 5px solid var(--primary); border-radius: 50%; z-index: 5; box-shadow: 0 0 30px var(--primary); }
+        .step-L .step-pointer { right: -20px; }
+        .step-R .step-pointer { left: -20px; }
+
+        .step-info { background: var(--dark-card); padding: 60px; border-radius: 50px; border: 1px solid var(--dark-border); position: relative; }
+        .step-info:hover { border-color: var(--primary); box-shadow: var(--shadow-rage); }
+        .step-info h3 { font-family: var(--font-head); font-size: 2rem; color: var(--primary); margin-bottom: 25px; }
+        .step-info ul li { margin-bottom: 15px; font-weight: 700; color: var(--muted-text); }
+        .step-info ul li::before { content: '🔥'; margin: 0 10px; }
+
+        /* ============================================================
+           14. SOCIAL EMPIRE
+           ============================================================ */
+        .social-empire { text-align: center; }
+        .soc-h2 { font-family: var(--font-head); font-size: 5rem; margin-bottom: 80px; }
+        .soc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
+        .soc-card { background: var(--dark-surface); padding: 80px 40px; border-radius: 55px; border: 1px solid var(--dark-border); transition: 0.5s; position: relative; overflow: hidden; }
+        .soc-card i { font-size: 4rem; color: var(--primary); margin-bottom: 30px; display: block; transition: 0.5s; }
+        .soc-card:hover { transform: translateY(-30px); background: var(--primary); border-color: var(--primary); }
+        .soc-card:hover i, .soc-card:hover h4, .soc-card:hover p { color: var(--white); }
+        .soc-card h4 { font-family: var(--font-head); font-size: 1.4rem; margin-bottom: 15px; }
+        .soc-card p { color: var(--muted-text); font-weight: 700; }
+
+        /* ============================================================
+           15. FAQ ACCORDION
+           ============================================================ */
+        .faq-section { max-width: 1100px; margin: 0 auto; }
+        .faq-h2 { font-family: var(--font-head); font-size: 4rem; text-align: center; margin-bottom: 80px; }
+        .faq-item { background: var(--dark-card); border-radius: 40px; margin-bottom: 25px; border: 1px solid var(--dark-border); overflow: hidden; }
+        .faq-trigger { width: 100%; padding: 40px 50px; display: flex; justify-content: space-between; align-items: center; background: none; color: var(--white); font-family: var(--font-main); font-weight: 900; font-size: 1.4rem; text-align: left; }
+        .faq-trigger i { transition: 0.4s; color: var(--primary); font-size: 1.8rem; }
+        .faq-answer { padding: 0 50px; max-height: 0; overflow: hidden; transition: 0.6s var(--ease); color: var(--muted-text); font-size: 1.2rem; line-height: 1.8; }
+        .faq-item.active .faq-answer { padding-bottom: 50px; max-height: 500px; }
+        .faq-item.active .faq-trigger i { transform: rotate(180deg); }
+
+        /* ============================================================
+           16. FOOTER (EXTENDED)
+           ============================================================ */
+        footer { padding: 150px 8% 60px; background: #050202; border-top: 2px solid var(--primary); }
+        .footer-main { display: grid; grid-template-columns: 2.5fr 1fr 1fr 1fr; gap: 100px; margin-bottom: 120px; }
+        .f-logo h2 { font-family: var(--font-head); font-size: 2.5rem; color: var(--primary); margin-bottom: 30px; }
+        .f-logo p { color: var(--muted-text); line-height: 2.2; font-size: 1.15rem; max-width: 500px; }
+        .f-list h5 { font-family: var(--font-head); font-size: 1rem; color: var(--white); margin-bottom: 40px; text-transform: uppercase; letter-spacing: 3px; }
+        .f-list ul li { margin-bottom: 20px; }
+        .f-list a { color: var(--muted-text); font-weight: 700; font-size: 1.05rem; }
+        .f-list a:hover { color: var(--primary); padding-left: 10px; }
+
+        .f-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 60px; text-align: center; }
+        .f-warn { max-width: 1100px; margin: 0 auto 40px; font-size: 0.85rem; color: #475569; line-height: 1.8; }
+        .f-copy { font-weight: 900; color: var(--muted-text); letter-spacing: 2px; }
+
+        /* ============================================================
+           17. RESPONSIVE MEDIA QUERIES (MASSIVE BLOCK)
+           ============================================================ */
+        @media (max-width: 1400px) {
+            .hero-h1 { font-size: 6rem; }
+            .dash-row { grid-template-columns: repeat(2, 1fr); }
+            .about-grid, .tok-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-container { grid-template-columns: 1fr; text-align: center; }
+            .hero-h1 span { display: inline-block; }
+            .hero-p { margin-left: auto; margin-right: auto; }
+            .hero-btns { justify-content: center; }
+            .tok-circle-visual { width: 350px; height: 350px; }
+        }
+
+        @media (max-width: 1024px) {
+            .nav-menu, .nav-btns { display: none; }
+            header { width: 95%; padding: 15px 25px; }
+            .hero-h1 { font-size: 5rem; }
+            .vault-grid, .soc-grid { grid-template-columns: 1fr 1fr; }
+            .footer-main { grid-template-columns: 1fr 1fr; }
+            .roadmap-line, .roadmap-progress { left: 40px; }
+            .road-step { width: 100%; left: 0 !important; text-align: left !important; padding-left: 100px; }
+            .step-pointer { left: 20px !important; }
+            .step-L li { justify-content: flex-start; }
+        }
+
+        @media (max-width: 768px) {
+            section { padding: 100px 5%; }
+            .hero-h1 { font-size: 4rem; letter-spacing: -3px; }
+            .hero-p { font-size: 1.2rem; }
+            .dash-row { grid-template-columns: 1fr; }
+            .vault-grid, .soc-grid, .footer-main { grid-template-columns: 1fr; }
+            .ca-box { padding: 60px 30px; }
+            .ca-code { font-size: 1rem; }
+            .about-h2 { font-size: 3.2rem; }
+            .soc-h2, .vault-h2 { font-size: 3.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="rage-cursor" id="cursor"></div>
+    <div class="rage-cursor-ring" id="cursorRing"></div>
+
+    <div class="rage-bg-nebula">
+        <div class="nebula-blob blob-red"></div>
+        <div class="nebula-blob blob-dark"></div>
+    </div>
+
+    <div id="preloader">
+        <div class="preloader-box">
+            <div class="rage-loader-circle"></div>
+            <div class="loader-text" id="loadStatus">Summoning Rage...</div>
+        </div>
+    </div>
+
+    <div class="rage-ticker">
+        <div class="ticker-inner">
+            <span>$PEICO RAGE • THE FINAL BOSS OF SOLANA • NO TAX • NO BULLSHIT • 100% LP BURNED • FOLLOW THE RAGE</span>
+            <span>$PEICO RAGE • THE FINAL BOSS OF SOLANA • NO TAX • NO BULLSHIT • 100% LP BURNED • FOLLOW THE RAGE</span>
+            <span>$PEICO RAGE • THE FINAL BOSS OF SOLANA • NO TAX • NO BULLSHIT • 100% LP BURNED • FOLLOW THE RAGE</span>
+        </div>
+    </div>
+
+    <header id="header">
+        <a href="#" class="logo-box">
+            <img src="peico1.jpg" alt="Rage" class="logo-img">
+            <span>PEICO RAGE</span>
+        </a>
+        <nav class="nav-menu">
+            <a href="#about" class="nav-link">About</a>
+            <a href="#vault" class="nav-link">Vault</a>
+            <a href="#tokenomics" class="nav-link">Econ</a>
+            <a href="#roadmap" class="nav-link">Map</a>
+        </nav>
+        <div class="nav-btns">
+            <a href="#" class="btn-rage btn-outline">Chart</a>
+            <a href="https://pump.fun" class="btn-rage btn-solid">Buy Rage</a>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="rage-badge">Solana's Most Aggressive Pack</div>
+                <h1 class="hero-h1">Peico <br><span>Rage.</span></h1>
+                <p class="hero-p">The unstoppable force has arrived. Peico Rage is not just a token; it's a movement built on the raw power of the Solana community. Join the red era.</p>
+                <div class="hero-btns" style="display:flex; gap:25px;">
+                    <a href="https://pump.fun/coin/B9viSKqxavs7d1tyFiteX8wLkaMzuYhah5gzFMh3pump" class="btn-rage btn-solid" style="padding: 25px 55px; font-size: 1.2rem;">Get $PEICO</a>
+                    <a href="#community" class="btn-rage btn-outline" style="padding: 25px 55px; font-size: 1.2rem;">Join Empire</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <img src="peico1.jpg" alt="Rage" class="hero-main-img">
+                <div class="stat-bubble bubble-1">🚀 <b>99% BURNED</b></div>
+                <div class="stat-bubble bubble-2">🔒 <b>NO RUG</b></div>
+                <div class="stat-bubble bubble-3">💎 <b>HODL</b></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="dash-section">
+        <div class="dash-row">
+            <div class="dash-card">
+                <span class="dash-label">Market Value</span>
+                <div class="dash-val" id="valPrice">$0.000042</div>
+            </div>
+            <div class="dash-card">
+                <span class="dash-label">Market Cap</span>
+                <div class="dash-val" id="valMcap">$1.2M</div>
+            </div>
+            <div class="dash-card">
+                <span class="dash-label">Liquidity Pool</span>
+                <div class="dash-val" style="color:var(--primary);">BURNED</div>
+            </div>
+            <div class="dash-card">
+                <span class="dash-label">Buy Tax</span>
+                <div class="dash-val">0%</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="rage-about" id="about">
+        <div class="about-grid">
+            <div class="about-media">
+                <img src="peico2.png" alt="Rage Art" class="about-img">
+            </div>
+            <div class="about-content">
+                <div class="rage-badge">The Philosophy</div>
+                <h2 class="about-h2">Unleash the <br><span>Inner Rage.</span></h2>
+                <p class="about-p">We are tired of soft launches and weak communities. Peico Rage is built for the aggressive degens who believe in the power of the pack. 100% transparent, 100% decentralized.</p>
+                <div class="rage-features">
+                    <div class="f-card">
+                        <i class="fas fa-bolt"></i>
+                        <h4>Turbo Speed</h4>
+                        <p>Solana's peak performance.</p>
+                    </div>
+                    <div class="f-card">
+                        <i class="fas fa-fire"></i>
+                        <h4>Eternal Burn</h4>
+                        <p>LP tokens are gone forever.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="vault-section" id="vault">
+        <div class="vault-head">
+            <div class="rage-badge">The Lab</div>
+            <h2 class="vault-h2">The <span>Rage</span> Vault</h2>
+        </div>
+        <div class="vault-grid">
+            <div class="vault-item"><img src="peico3.png" alt="M"><div class="vault-info"><h4>Berserker Mode</h4></div></div>
+            <div class="vault-item"><img src="peico4.png" alt="M"><div class="vault-info"><h4>Moon Conqueror</h4></div></div>
+            <div class="vault-item"><img src="peico5.png" alt="M"><div class="vault-info"><h4>Rage Lord</h4></div></div>
+            <div class="vault-item"><img src="peico6.png" alt="M"><div class="vault-info"><h4>Solana Beast</h4></div></div>
+            <div class="vault-item"><img src="peico7.png" alt="M"><div class="vault-info"><h4>Red Candle King</h4></div></div>
+            <div class="vault-item"><img src="peico8.png" alt="M"><div class="vault-info"><h4>Chaos Master</h4></div></div>
+        </div>
+    </section>
+
+    <section class="rage-tok-section" id="tokenomics">
+        <div class="rage-tok">
+            <div class="tok-grid">
+                <div class="tok-left">
+                    <div class="rage-badge">Economics</div>
+                    <h2 style="font-family:var(--font-head); font-size:4rem; margin-bottom:50px;">Ragernomics</h2>
+                    <div class="tok-list">
+                        <div class="tok-item"><span class="tok-k">Ticker</span><span class="tok-v">$PEICO</span></div>
+                        <div class="tok-item"><span class="tok-k">Total Supply</span><span class="tok-v">1,000,000,000</span></div>
+                        <div class="tok-item"><span class="tok-k">Buy Tax</span><span class="tok-v">0%</span></div>
+                        <div class="tok-item"><span class="tok-k">Sell Tax</span><span class="tok-v">0%</span></div>
+                        <div class="tok-item"><span class="tok-k">Liquidity</span><span class="tok-v">100% BURNED</span></div>
+                    </div>
+                </div>
+                <div class="tok-right">
+                    <div class="tok-circle-visual">
+                        <svg class="circle-svg" viewBox="0 0 330 330">
+                            <circle class="circle-bg" cx="165" cy="165" r="140"></circle>
+                            <circle class="circle-fill" id="tokCircle" cx="165" cy="165" r="140"></circle>
+                        </svg>
+                        <div class="tok-center-text">
+                            <h3>99%</h3>
+                            <p style="font-weight:900; letter-spacing:3px;">FOR THE PACK</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="rage-ca-section">
+        <div class="ca-box">
+            <h2>Contract of Power</h2>
+            <div class="ca-input">
+                <span class="ca-code" id="caStr">B9viSKqxavs7d1tyFiteX8wLkaMzuYhah5gzFMh3pump</span>
+                <button class="copy-btn" onclick="copyCA()">Copy CA</button>
+            </div>
+            <div style="margin-top:60px; display:flex; justify-content:center; gap:40px;">
+                <a href="#" style="font-weight:900; color:var(--primary); border-bottom:2px solid var(--primary);">SOLSCAN</a>
+                <a href="#" style="font-weight:900; color:var(--primary); border-bottom:2px solid var(--primary);">DEXTOOLS</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="roadmap" id="roadmap">
+        <div style="text-align:center; margin-bottom:100px;">
+            <div class="rage-badge">The War Plan</div>
+            <h2 style="font-family:var(--font-head); font-size:4.5rem;">Conquest <span>Map</span></h2>
+        </div>
+        <div class="roadmap-path">
+            <div class="roadmap-line"></div>
+            <div class="roadmap-progress" id="roadProgress"></div>
+
+            <div class="road-step step-L">
+                <div class="step-pointer"></div>
+                <div class="step-info">
+                    <h3>PHASE 1: IGNITION</h3>
+                    <ul>
+                        <li>Stealth Launch on Solana</li>
+                        <li>Instant LP Burn & Renounce</li>
+                        <li>1,000+ Degen Telegram Hub</li>
+                        <li>Aggressive X Raids Setup</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="road-step step-R">
+                <div class="step-pointer"></div>
+                <div class="step-info">
+                    <h3>PHASE 2: EXPLOSION</h3>
+                    <ul>
+                        <li>DexScreener Paid Ads</li>
+                        <li>Major Influencer Backing</li>
+                        <li>CoinGecko & CMC Listing</li>
+                        <li>Viral TikTok & IG Campaigns</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="road-step step-L">
+                <div class="step-pointer"></div>
+                <div class="step-info">
+                    <h3>PHASE 3: DOMINATION</h3>
+                    <ul>
+                        <li>Tier-2 Exchange Listing</li>
+                        <li>Rage NFT Collection Drop</li>
+                        <li>Custom Peico Merch Store</li>
+                        <li>Aggressive Marketing Push</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="social-empire" id="community">
+        <div class="rage-badge">The Network</div>
+        <h2 class="soc-h2">Join the <span>Empire</span></h2>
+        <div class="soc-grid">
+            <a href="https://instagram.com/peico_inu" class="soc-card">
+                <i class="fab fa-instagram"></i>
+                <h4>Instagram</h4>
+                <p>Daily Rage Vibes</p>
+            </a>
+            <a href="https://t.me/Peico_Inu" class="soc-card" style="background: #229ED9; border:none;">
+                <i class="fab fa-telegram" style="color:white;"></i>
+                <h4 style="color:white;">Telegram</h4>
+                <p style="color:rgba(255,255,255,0.7);">The Pack Chat</p>
+            </a>
+            <a href="https://x.com/PEICOAI" class="soc-card" style="background: black; border:none;">
+                <i class="fab fa-twitter" style="color:white;"></i>
+                <h4 style="color:white;">Twitter / X</h4>
+                <p style="color:rgba(255,255,255,0.7);">Alpha Alerts</p>
+            </a>
+            <a href="#" class="soc-card">
+                <i class="fas fa-chart-line"></i>
+                <h4>DexScreener</h4>
+                <p>Watch it Moon</p>
+            </a>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <h2 class="faq-h2">The <span>Intel</span></h2>
+        <div class="faq-item">
+            <button class="faq-trigger">Is Peico Rage Rug-Proof? <i class="fas fa-chevron-down"></i></button>
+            <div class="faq-answer">
+                <p>Absolutely. The Liquidity Pool is burned forever, and the contract ownership has been renounced. The team only holds a small percentage for marketing.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <button class="faq-trigger">Why Solana Chain? <i class="fas fa-chevron-down"></i></button>
+            <div class="faq-answer">
+                <p>Solana provides the speed and low fees necessary for an aggressive meme culture. No one likes $50 gas fees.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-main">
+            <div class="f-logo">
+                <h2>PEICO RAGE 🐶🔥</h2>
+                <p>The final boss of Solana memes. We are here to bring transparency and raw power back to the space. Join the pack or get left behind.</p>
+            </div>
+            <div class="f-list">
+                <h5>Empire</h5>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#tokenomics">Econ</a></li>
+                </ul>
+            </div>
+            <div class="f-list">
+                <h5>Tools</h5>
+                <ul>
+                    <li><a href="#">Solscan</a></li>
+                    <li><a href="#">DexTools</a></li>
+                    <li><a href="#">DexScreener</a></li>
+                </ul>
+            </div>
+            <div class="f-list">
+                <h5>Social</h5>
+                <ul>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Telegram</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="f-bottom">
+            <div class="f-warn">
+                <b>Disclaimer:</b> $PEICO is a meme coin for entertainment. No value. High risk. DYOR.
+            </div>
+            <p class="f-copy">© 2026 PEICO RAGE EMPIRE. STAY AGGRESSIVE.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 1. EXTENDED PRELOADER
+        const statusText = document.getElementById('loadStatus');
+        const statuses = ["Charging Speed...", "Burning LP...", "Assembling Pack...", "Unleashing Rage!"];
+        let sIdx = 0;
+        const statusInt = setInterval(() => {
+            statusText.innerText = statuses[sIdx];
+            sIdx = (sIdx + 1) % statuses.length;
+        }, 400);
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                clearInterval(statusInt);
+                document.getElementById('preloader').style.opacity = '0';
+                setTimeout(() => document.getElementById('preloader').style.display = 'none', 800);
+            }, 2500);
+        });
+
+        // 2. RAGE CURSOR MOVEMENT
+        const cursor = document.getElementById('cursor');
+        const ring = document.getElementById('cursorRing');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            ring.style.left = e.clientX - 20 + 'px';
+            ring.style.top = e.clientY - 20 + 'px';
+        });
+
+        // 3. HEADER SCROLL EFFECT
+        window.addEventListener('scroll', () => {
+            const h = document.getElementById('header');
+            if(window.scrollY > 100) h.classList.add('scrolled');
+            else h.classList.remove('scrolled');
+
+            // Roadmap Progress Logic
+            const roadPos = document.getElementById('roadmap').offsetTop;
+            const scrollPos = window.scrollY + window.innerHeight;
+            if(scrollPos > roadPos) {
+                const height = Math.min(100, ((scrollPos - roadPos) / 1000) * 100);
+                document.getElementById('roadProgress').style.height = height + '%';
+            }
+        });
+
+        // 4. DEX DATA FETCH
+        async function getMarketInfo() {
+            try {
+                const res = await fetch(`https://api.dexscreener.com/latest/dex/tokens/B9viSKqxavs7d1tyFiteX8wLkaMzuYhah5gzFMh3pump`);
+                const json = await res.json();
+                if(json.pairs) {
+                    const p = json.pairs[0];
+                    document.getElementById('valPrice').innerText = '$' + parseFloat(p.priceUsd).toFixed(8);
+                    document.getElementById('valMcap').innerText = '$' + parseInt(p.fdv).toLocaleString();
+                }
+            } catch(e) { console.log("API Error"); }
+        }
+        setInterval(getMarketInfo, 10000);
+        getMarketInfo();
+
+        // 5. CA COPY
+        function copyCA() {
+            const str = document.getElementById('caStr').innerText;
+            navigator.clipboard.writeText(str);
+            const b = document.querySelector('.copy-btn');
+            b.innerText = "DONE!";
+            setTimeout(() => b.innerText = "Copy CA", 2000);
+        }
+
+        // 6. ACCORDION
+        document.querySelectorAll('.faq-trigger').forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.parentElement.classList.toggle('active');
+            });
+        });
+
+        // 7. INTERSECTION OBSERVER FOR ROADMAP
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if(e.isIntersecting) e.target.classList.add('step-show');
+            });
+        }, {threshold: 0.2});
+
+        document.querySelectorAll('.road-step').forEach(s => observer.observe(s));
+
+        // 8. PARALLAX MOUSE EFFECT
+        document.addEventListener('mousemove', (e) => {
+            const x = (window.innerWidth / 2 - e.pageX) / 40;
+            const y = (window.innerHeight / 2 - e.pageY) / 40;
+            const img = document.querySelector('.hero-main-img');
+            if(img) img.style.transform = `translateX(${x}px) translateY(${y}px) rotate(${x/10}deg)`;
+        });
+
+    </script>
+</body>
+  </html>
