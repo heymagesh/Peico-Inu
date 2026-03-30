@@ -883,31 +883,65 @@
 const CA = "B9viSKqxavs7d1tyFiteX8wLkaMzuYhah5gzFMh3pump";
 
 async function updatePrice() {
+    const priceEl = document.getElementById("priceSim");
+    const mcapEl = document.getElementById("mcapSim");
+
     try {
+        // 🔄 Loading state
+        priceEl.innerText = "Loading...";
+        
         const res = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${CA}`);
         const data = await res.json();
 
+        // ❌ No pairs
         if (!data.pairs || data.pairs.length === 0) {
             console.log("No pairs found");
+            priceEl.innerText = "No Data";
+            mcapEl.innerText = "-";
             return;
         }
 
-        // best pair select
-        const pair = data.pairs.find(p => p.priceUsd) || data.pairs[0];
+        // ✅ BEST PAIR (volume filter + sort)
+        const pair = data.pairs
+            .filter(p => (p.volume?.h24 || 0) > 1000)
+            .sort((a, b) => (b.volume?.h24 || 0) - (a.volume?.h24 || 0))[0]
+            || data.pairs[0];
 
-        const price = Number(pair.priceUsd || 0);
-        const mcap = Number(pair.fdv || pair.marketCap || 0);
+        // ✅ SAFE VALUES
+        const price = parseFloat(pair.priceUsd) || 0;
+        const mcap = parseFloat(pair.marketCap || pair.fdv || 0);
 
-        document.getElementById("priceSim").innerText =
-            "$" + price.toFixed(8);
+        // ===============================
+        // PRICE UPDATE + COLOR EFFECT
+        // ===============================
+        const oldPrice = parseFloat(priceEl.dataset.last || 0);
 
-        document.getElementById("mcapSim").innerText =
-            "$" + mcap.toLocaleString();
+        priceEl.innerText = "$" + price.toFixed(8);
+        priceEl.dataset.last = price;
+
+        if (price > oldPrice) {
+            priceEl.style.color = "#00ff9f"; // green
+        } else if (price < oldPrice) {
+            priceEl.style.color = "#ff4d4d"; // red
+        }
+
+        // ===============================
+        // MCAP UPDATE
+        // ===============================
+        mcapEl.innerText = "$" + Math.floor(mcap).toLocaleString();
 
     } catch (e) {
         console.log("DEX ERROR:", e);
+
+        // ❌ error fallback
+        priceEl.innerText = "Error";
+        mcapEl.innerText = "-";
     }
 }
+
+// ✅ RUN (safe interval)
+updatePrice();
+setInterval(updatePrice, 10000);
 
 // run
 updatePrice();
